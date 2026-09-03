@@ -1,0 +1,47 @@
+{
+  "project": "Swahili SMS Scam Detection",
+  "model_type": "XGBoost Classifier",
+  "feature_extraction": "TF-IDF",
+  "text_features": {
+    "ngram_range": [1, 2],
+    "max_features": 10000,
+    "lowercase": true
+  },
+  "label_mapping": {
+    "trust": 0,
+    "scam": 1
+  },
+  "dataset": {
+    "name": "BongoScam",
+    "original_samples": 1508,
+    "duplicates_removed": 131,
+    "final_samples": 1377,
+    "scam_samples": 880,
+    "trust_samples": 497
+  },
+  "data_split": {
+    "training": 963,
+    "validation": 207,
+    "test": 207,
+    "random_state": 42,
+    "stratified": true
+  },
+  "xgboost": {
+    "n_estimators": 300,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "eval_metric": "logloss"
+  },
+  "results": {
+    "validation_accuracy": 1.0,
+    "validation_roc_auc": 1.0,
+    "test_accuracy": 0.9952,
+    "test_roc_auc": 1.0
+  },
+  "artifacts": {
+    "model": "sms_fraud_model.pkl",
+    "vectorizer": "tfidf_vectorizer.pkl"
+  }
+}
